@@ -1,0 +1,8 @@
+.list__item {
+  width: min(calc(100vw - 1rem), 36rem);
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  cursor: grabbing;
+}
