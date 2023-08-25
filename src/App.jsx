@@ -1,5 +1,3 @@
-import "./App.css";
-
 import { DndContext, closestCenter } from "@dnd-kit/core";
 
 import {
@@ -8,9 +6,22 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { useState } from "react";
-import Item from "./component/Item/Item.jsx";
+import DraggableItem from "./component/DraggableItem/DraggableItem.jsx";
 
-const ITEMS = ["Item 1", "Item 2", "Item 3"];
+const ITEMS = [
+  {
+    id: crypto.randomUUID(),
+    title: "Draggable Item 1",
+  },
+  {
+    id: crypto.randomUUID(),
+    title: "Draggable Item 2",
+  },
+  {
+    id: crypto.randomUUID(),
+    title: "Draggable Item 3",
+  },
+];
 
 function App() {
   const [items, setItems] = useState(ITEMS);
@@ -23,8 +34,8 @@ function App() {
     }
 
     setItems((items) => {
-      const activeIndex = items.indexOf(active.id);
-      const overIndex = items.indexOf(over.id);
+      const activeIndex = items.findIndex((item) => item.id === active.id);
+      const overIndex = items.findIndex((item) => item.id === over.id);
       return arrayMove(items, activeIndex, overIndex);
     });
   }
@@ -34,9 +45,9 @@ function App() {
       <h1>React Drag and Drop</h1>
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          <ul className="list flow">
-            {items.map((item, index) => (
-              <Item key={index} id={item} />
+          <ul className="draggable__list flow">
+            {items.map((item) => (
+              <DraggableItem key={item.id} id={item.id} title={item.title} />
             ))}
           </ul>
         </SortableContext>

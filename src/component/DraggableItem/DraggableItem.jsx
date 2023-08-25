@@ -1,8 +1,8 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import "./Item.css";
+import "./DraggableItem.css";
 
-function Item({ id }) {
+function DraggableItem({ id, title }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
 
@@ -11,17 +11,24 @@ function Item({ id }) {
     transition,
   };
 
+  function handleClick() {
+    console.log("Button has been clicked");
+  }
+
   return (
     <li
-      className="list__item"
+      className="draggable-item"
       style={style}
       ref={setNodeRef}
       {...attributes}
       {...listeners}
     >
-      {id}
+      {title}
+      <button className="btn btn--green" onClick={handleClick}>
+        Click me
+      </button>
     </li>
   );
 }
 
-export default Item;
+export default DraggableItem;
