@@ -11,10 +11,6 @@ function DraggableItem({ id, title }) {
     transition,
   };
 
-  function handleClick() {
-    console.log("Button has been clicked");
-  }
-
   return (
     <li
       className="draggable-item"
@@ -24,9 +20,6 @@ function DraggableItem({ id, title }) {
       {...listeners}
     >
       {title}
-      <button className="btn btn--green" onClick={handleClick}>
-        Click me
-      </button>
     </li>
   );
 }

@@ -11,15 +11,15 @@ import DraggableItem from "./component/DraggableItem/DraggableItem.jsx";
 const ITEMS = [
   {
     id: crypto.randomUUID(),
-    title: "Draggable Item 1",
+    title: "Item 1",
   },
   {
     id: crypto.randomUUID(),
-    title: "Draggable Item 2",
+    title: "Item 2",
   },
   {
     id: crypto.randomUUID(),
-    title: "Draggable Item 3",
+    title: "Item 3",
   },
 ];
 
